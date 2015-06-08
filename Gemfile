@@ -32,7 +32,7 @@ gem 'bootstrap-sass'
 gem 'simple_form'
 gem 'paperclip', '~> 4.2.0'
 gem 'masonry-rails', '~> 0.2.1'
-
+gem 'acts_as_votable', '~> 0.10.0'
 gem 'exifr'
 
 # Use ActiveModel has_secure_password
