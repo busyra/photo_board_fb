@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>PhotoBook</title>
+		<%= stylesheet_link_tag    'application', media: 'all'%>
+		<%= javascript_include_tag 'application' %>
+		<%= csrf_meta_tags %>
+	</head>
+<body>
+	<!-- NAV BAR -->
+	<div class = "navbar navbar-default">
+		<div class = "container">
+			<div class="navbar-brand">
+  				<%= link_to "Photo Book", root_path %>
+			</div>
+			<% if current_user %>
+				<!-- Displays current user -->
+				<div class = "nav navbar-nav navbar-left">
+					<br>Hello <%= current_user.name %>
+				</div>
+				<!-- Displays link in nav bar when signed in -->
+				<div class = "nav navbar-nav navbar-right">
+					<div class = "btn-group">
+						<%= link_to 'PhotoBook', root_path, class: "btn btn-default" %>
+						<%= link_to 'New Post', new_post_path,class: "btn btn-default" %>
+						<%= link_to 'Account', user_path(current_user.id), class: "btn btn-default" %>
+						<%= link_to 'Log out', logout_path, method: :delete , class: "btn btn-danger"  %>
+					</div>
+				</div>
+			<% else %>
+				<!-- Alternate links if user not signed in -->
+				<div class = "nav navbar-nav navbar-right">
+					<%= link_to 'Sign Up', users_new_path, class: "btn btn-default" %>
+					<%= link_to 'Sign In', login_path, class: "btn btn-default" %>
+				</div>
+			<% end %>
+		</div>
+	</div>
+	<!--flashes notice message under nav bar //tested working -->
+	<div>
+		<%flash.each do |name, msg|%>
+			<%= content_tag :div, msg, class: "alert alert-info" %>
+		<% end %>
+	</div>
+	
+	<%= yield %>
+
+</body>
+</html>

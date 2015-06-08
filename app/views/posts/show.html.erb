@@ -1,0 +1,43 @@
+<div>	
+	<div class = "col-md-8 col-md-offset-2">
+		<div class = "panel panel-default">
+			<div class = "panel-heading">
+					<!-- displays post title and description -->
+					<center>
+						<%= image_tag @post.image.url(:med) %><br>
+						<h3> <%= @post.title %> </h3>
+					</center>
+					<div class = "row">
+						<div class = "col-xs-6">
+							<h5> Description: </h5>
+							<p> <%= @post.description %></p>
+						</div>	
+						<div class = "col-xs-6">
+							<h5> Data: </h5>					
+							<p>Dimensions: <%= @img.width %> x <%= @img.height %></p>
+							<p>Exposure: <%= @img.exposure_time.to_s %></p>
+							<p>F Stop: <%= @img.f_number.to_f %></p>
+							<p>Model: <%= @img.model %></p>
+							<p>ISO: <%= @img.iso_speed_ratings %></p>
+							<p>Focal Length: <%= @img.focal_length_in_35mm_film %> mm</p>
+						</div>
+					</div>
+			</div>		
+			<div class = "panel-footer">
+				<div class = "row">
+					<div class = "col-xs-6">
+						<h5>Submitted by: <%= @post.user.email%></h5>
+					</div>
+					<div class = "col-xs-6">
+						<div class = "btn-group pull-right">
+							<!--  link to edit post -->
+							<%= link_to "Edit", edit_post_path, class: "btn btn-default" %>
+							<!-- link to destroy post and confirmation message-->
+							<%= link_to "Delete", post_path, method: :delete, data: {confirm: "Are you sure you want to delete this post?"},class: "btn btn-default" %>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

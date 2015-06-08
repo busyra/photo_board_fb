@@ -1,0 +1,19 @@
+<!-- main page -->
+<div class="row">
+    <div class="col-md-2 col-md-offset-5">
+    	<h3>Photo Book</h3>
+    </div>	
+</div>
+<!-- will display all posts -->
+<div class = "col-md-12 col-md-offset-0">
+	<div id="posts" class="transition-enabled">
+	 
+		<% @post.each do |post| %>
+			<div class="box panel panel-default">
+				<%= image_tag post.image.url(:med) %>
+				<center><h4> <%= link_to post.title, post%></h4></center>
+				<p>Submitted by: <%= post.user.email%></p>
+			</div>
+		<% end %>
+	</div>
+</div>
