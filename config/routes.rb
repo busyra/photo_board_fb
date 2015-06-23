@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  #route for facebook log in
+  get "/auth/:provider/callback" => "sessions#facebook"
   #routes for posts
   get "posts/" => "posts#index"
   get "posts/new" => "posts#new", as: :new_post
@@ -16,6 +19,8 @@ Rails.application.routes.draw do
   post "users" => "users#create"
 
   # routes for session
+  get 'sessions/show'
+  get 'auth/logout' => 'sessions#fbdestroy'
   get "login"     => 'sessions#new'
   post "login"    => 'sessions#create'
   delete "logout" => 'sessions#destroy'
