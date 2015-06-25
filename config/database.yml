@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: photo_board_production
-  username: photo_board
-  password: <%= ENV['PHOTO_BOARD_DATABASE_PASSWORD'] %>
+  username: rails
+  password: <%= ENV['APP_DATABASE_PASSWORD'] %>
